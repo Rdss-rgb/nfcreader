@@ -185,8 +185,8 @@ scanButton.addEventListener("click", async () => {
         document.getElementById('msg').innerText='Message written.';
       })
       .catch((error) => {
-        console.log(`Write failed :-( try again: ${error}.`);
-        document.getElementById('msg').innerText=`Write failed :-( try again: ${error}.`;
+        console.log(`Write failed try again: ${error}.`);
+        document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
       });
   });
   
