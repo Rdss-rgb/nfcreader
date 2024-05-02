@@ -182,9 +182,11 @@ scanButton.addEventListener("click", async () => {
       .write("Hello World")
       .then(() => {
         console.log("Message written.");
+        document.getElementById('msg').innerText='Message written.';
       })
       .catch((error) => {
         console.log(`Write failed :-( try again: ${error}.`);
+        document.getElementById('msg').innerText=`Write failed :-( try again: ${error}.`;
       });
   });
   
