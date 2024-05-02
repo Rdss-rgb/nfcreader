@@ -141,11 +141,11 @@ const scanButton = document.querySelector('#scan');
 const stopScanButton = document.querySelector('#stop-scan');
 const writeButton = document.querySelector('#write');
 const makeReadOnlyButton = document.querySelector('#makeReadOnlyButton');
-
+var scanning=false;
 
 scanButton.addEventListener("click", async () => {
     console.log("User clicked scan button");
-  
+    document.getElementById('msg').innerText='';
     try {
       const ndef = new NDEFReader();
 
@@ -167,6 +167,7 @@ scanButton.addEventListener("click", async () => {
         let msgObj = await JSON.stringify(message);
         document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} ${msgObj}`;
         // message ${message}
+        scanning=true;
         document.getElementById('records').innerText=`Records: (${message.records.length})`;
       });
     } catch (error) {
@@ -176,18 +177,25 @@ scanButton.addEventListener("click", async () => {
   
   writeButton.addEventListener("click", async () => {
     console.log("User clicked write button");
-  
-    const ndef = new NDEFReader();
-    ndef
-      .write("Hello World")
-      .then(() => {
-        console.log("Message written.");
-        document.getElementById('msg').innerText='Message written.';
-      })
-      .catch((error) => {
-        console.log(`Write failed try again: ${error}.`);
-        document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
-      });
+    console.log(scanning)
+    if(scanning == true){
+      const ndef = new NDEFReader();
+      ndef
+        .write("Hello World1")
+        .then(() => {
+          console.log("Message written.");
+          document.getElementById('msg1').innerText='Message written!';
+        })
+        .catch((error) => {
+          console.log(`Write failed try again: ${error}.`);
+          document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
+        });
+    }
+    else{
+      document.getElementById('msg').innerText='Please Scan NFC First!';
+    }
+
+   
   });
   
   // makeReadOnlyButton.addEventListener("click", async () => {
@@ -207,12 +215,13 @@ scanButton.addEventListener("click", async () => {
 
   stopScanButton.addEventListener("click", async () => {
     console.log("User clicked write button");
-  
     try {
       const ndef = new NDEFReader();
       await ndef.s;
       console.log("> scan stop");
+      window.location.reload();
     } catch (error) {
       console.log("Argh! " + error);
     }
+   
   });
