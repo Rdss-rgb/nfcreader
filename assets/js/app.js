@@ -165,13 +165,18 @@ scanButton.addEventListener("click", async () => {
         document.getElementById('loader').classList.add('hidden');
         console.log(`* Serial Number: ${serialNumber} `, message);
 
-     
-        document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length: ${message.records[0]['data']['byteLength']}`;
-        console.log(message.records)
-        console.log(message.records[0]['data']['byteLength'])
-        // message ${message}
-        scanning=true;
-        document.getElementById('records').innerText=`Records: (${message.records.length})`;
+     if(message.records[0]['data']['byteLength']==0){
+      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`;
+     }
+     else{
+      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length: ${message.records[0]['data']['byteLength']}`;
+     }
+     console.log(message.records)
+     console.log(message.records[0]['data']['byteLength'])
+     // message ${message}
+     scanning=true;
+     document.getElementById('records').innerText=`Records: (${message.records.length})`;
+       
       });
     } catch (error) {
       console.log("Argh! " + error);
