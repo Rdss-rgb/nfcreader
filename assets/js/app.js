@@ -164,8 +164,11 @@ scanButton.addEventListener("click", async () => {
         document.getElementById('status').innerText='Found';
         document.getElementById('loader').classList.add('hidden');
         console.log(`* Serial Number: ${serialNumber} `, message);
-        let msgObj = await JSON.stringify(message);
-        document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} ${msgObj}`;
+
+     
+        document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length: ${message.records[0]['data']['byteLength']}`;
+        console.log(message.records)
+        console.log(message.records[0]['data']['byteLength'])
         // message ${message}
         scanning=true;
         document.getElementById('records').innerText=`Records: (${message.records.length})`;
