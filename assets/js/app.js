@@ -184,7 +184,7 @@ scanButton.addEventListener("click", async () => {
     if(scanning == true){
       const ndef = new NDEFReader();
       ndef
-        .write("Helloo")
+        .write("Hello World")
         .then(() => {
           console.log("Message written.");
           document.getElementById('msg1').innerText='Message written!';
