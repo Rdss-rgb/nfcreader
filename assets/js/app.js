@@ -191,7 +191,6 @@ scanButton.addEventListener("click", async () => {
     for (var i = 0; i < byteMsg.length; i++) {
       byteMsg[i] = i % 256
     }
-    byteMsg
     if(scanning == true){
       const ndef = new NDEFReader();
       ndef
