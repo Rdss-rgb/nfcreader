@@ -166,7 +166,7 @@ scanButton.addEventListener("click", async () => {
         console.log(`* Serial Number: ${serialNumber} `, message);
 
      if(message.records[0]['recordType']=='empty'){
-      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`;
+      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`+`${message.records[0]['data']['byteLength']}`;
      }
      else{
       document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`;
