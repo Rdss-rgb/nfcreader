@@ -165,13 +165,13 @@ scanButton.addEventListener("click", async () => {
         document.getElementById('loader').classList.add('hidden');
         console.log(`* Serial Number: ${serialNumber} `, message);
 
-     if(message.records[0]['recordType']=='empty'){
-      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`;
-     }
-     else{
-      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length: ${message.records[0]['data']['byteLength']}`;
-      console.log(message.records[0]['data']['byteLength']) 
-     }
+    //  if(message.records[0]['recordType']=='empty'){
+    //   document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`;
+    //  }
+    //  else{
+      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`;
+      // console.log(message.records[0]['data']['byteLength']) 
+    //  }
      console.log(message.records)
 
      // message ${message}
