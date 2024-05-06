@@ -188,7 +188,7 @@ scanButton.addEventListener("click", async () => {
     console.log("User clicked write button");
     console.log(scanning)
     let byteMsg = new ArrayBuffer(48)
-    for (var i = 0; byteMsg.length; i++) {
+    for (var i = 0; i < byteMsg.length; i++) {
       byteMsg[i] = i % 256
     }
     byteMsg
