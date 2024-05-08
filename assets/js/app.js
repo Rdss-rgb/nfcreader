@@ -189,12 +189,12 @@ scanButton.addEventListener("click", async () => {
     console.log(scanning)
     let byteMsg1 = new Uint8Array(64);
     for (var i = 0; i < byteMsg.byteLength; i++) {
-      byteMsg[i] = i % 256
+      byteMsg1[i] = i % 256
     }
     writeData(byteMsg1);
     let byteMsg2 = new Uint8Array(64);
     for (var i = 64; i < byteMsg.byteLength+64; i++) {
-      byteMsg[i] = i % 256
+      byteMsg2[i] = i % 256
     }
     writeData(byteMsg2);
 
