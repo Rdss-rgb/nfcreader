@@ -187,16 +187,16 @@ scanButton.addEventListener("click", async () => {
   writeButton.addEventListener("click", async () => {
     console.log("User clicked write button");
     console.log(scanning)
-    let byteMsg1 = new Uint8Array(128);
+    let byteMsg1 = new Uint8Array(64);
     for (var i = 0; i < byteMsg.byteLength; i++) {
       byteMsg[i] = i % 256
     }
     writeData(byteMsg1);
-    // let byteMsg2 = new Uint8Array(64);
-    // for (var i = 64; i < byteMsg.byteLength+64; i++) {
-    //   byteMsg[i] = i % 256
-    // }
-    // writeData(byteMsg2);
+    let byteMsg2 = new Uint8Array(64);
+    for (var i = 64; i < byteMsg.byteLength+64; i++) {
+      byteMsg[i] = i % 256
+    }
+    writeData(byteMsg2);
 
    
   });
