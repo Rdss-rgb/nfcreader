@@ -187,10 +187,22 @@ scanButton.addEventListener("click", async () => {
   writeButton.addEventListener("click", async () => {
     console.log("User clicked write button");
     console.log(scanning)
-    let byteMsg = new Uint8Array(64);
+    let byteMsg1 = new Uint8Array(64);
     for (var i = 0; i < byteMsg.byteLength; i++) {
       byteMsg[i] = i % 256
     }
+    writeData(byteMsg1);
+    let byteMsg2 = new Uint8Array(64);
+    for (var i = 64; i < byteMsg.byteLength+64; i++) {
+      byteMsg[i] = i % 256
+    }
+    writeData(byteMsg2);
+
+   
+  });
+  
+  function writeData(byteMsg) {
+
     if(scanning == true){
       const ndef = new NDEFReader();
       ndef
@@ -209,10 +221,8 @@ scanButton.addEventListener("click", async () => {
     else{
       document.getElementById('msg').innerText='Please Scan NFC First!';
     }
+  }
 
-   
-  });
-  
   // makeReadOnlyButton.addEventListener("click", async () => {
   //   console.log("User clicked make read-only button");
   
