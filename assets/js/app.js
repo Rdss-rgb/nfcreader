@@ -22,15 +22,15 @@ scanButton.addEventListener("click", async () => {
 
   
       ndef.addEventListener("reading", async ({ message, serialNumber}) => {
-        // var mess=message.records[0]['data']['byteLength'];
+        var mess=message.records[0]['data']['byteLength'];
         document.getElementById('status').innerText='Found';
         document.getElementById('loader').classList.add('hidden');
         console.log(`* Serial Number: ${serialNumber} `, message);
      if(message.records[0]['recordType']=='empty'){
-      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`;
+      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`+mess;
      }
      else{
-      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber}  `+`\n`+ `Byte length:`;
+      document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber}  `+`\n`+ `Byte length:`+mess;
       console.log(message.records[0]['data']['byteLength']) 
       console.log(message.records[0]['data']['byteLength'][[[Uint8Array]]])
 
