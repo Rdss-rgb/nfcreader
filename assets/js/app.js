@@ -50,10 +50,18 @@ scanButton.addEventListener("click", async () => {
   writeButton.addEventListener("click", async () => {
     console.log("User clicked write button");
     console.log(scanning)
+    var tohex=Uint8Array.from(atob("cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA"), c => c.charCodeAt(0))
+
+    console.log('result',tohex)
     let byteMsg = new Uint8Array(128);
     for (var i = 0; i < byteMsg.byteLength; i++) {
-      byteMsg[i] = i % 256
+        byteMsg[i] = tohex[i]
     }
+    console.log(byteMsg);
+    // let byteMsg = new Uint8Array(128);
+    // for (var i = 0; i < byteMsg.byteLength; i++) {
+    //   byteMsg[i] = i % 256
+    // }
     if(scanning == true){
       const ndef = new NDEFReader();
       ndef.write(byteMsg)
@@ -85,12 +93,12 @@ scanButton.addEventListener("click", async () => {
     }
    
   });
-  var url='https://api.restful-api.dev/objects';
-  fetch(url)
-  .then(response=>response.json())
-  .then(response => {
-    console.log(response);
-  })
-  .catch(error =>{
-    console.error(error)
-  })
+  // var url='https://api.restful-api.dev/objects';
+  // fetch(url)
+  // .then(response=>response.json())
+  // .then(response => {
+  //   console.log(response);
+  // })
+  // .catch(error =>{
+  //   console.error(error)
+  // })
