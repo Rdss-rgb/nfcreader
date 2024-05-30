@@ -52,7 +52,7 @@ scanButton.addEventListener("click", async () => {
     console.log(scanning)
     var tohex=Uint8Array.from(atob("cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA"), c => c.charCodeAt(0))
 
-    console.log('result',tohex)
+    console.log('PSBT Format:','cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA','PSBT convert to hex result: ',tohex)
     let byteMsg = new Uint8Array(128);
     for (var i = 0; i < byteMsg.byteLength; i++) {
         byteMsg[i] = tohex[i]
