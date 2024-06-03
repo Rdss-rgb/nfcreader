@@ -36,7 +36,6 @@ scanButton.addEventListener("click", async () => {
      else{
       document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber}  `+`\n`+ `Byte length:`+mess;
       console.log(message.records[0]['data']['byteLength']) 
-      console.log(message.records[0]['data']['byteLength'][[[Uint8Array]]])
 
      }
      console.log(message.records)
