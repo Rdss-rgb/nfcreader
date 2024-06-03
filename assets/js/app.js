@@ -22,7 +22,13 @@ scanButton.addEventListener("click", async () => {
 
   
       ndef.addEventListener("reading", async ({ message, serialNumber}) => {
-        var mess=message.records[0]['data']['byteLength'];
+      
+        if(message.records[0]['data'] !=null){
+          var mess=message.records[0]['data']['byteLength'];
+        }
+        else{
+          
+        }
         document.getElementById('status').innerText='Found';
         document.getElementById('loader').classList.add('hidden');
         console.log(`* Serial Number: ${serialNumber} `, message);
