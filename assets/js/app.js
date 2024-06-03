@@ -2,7 +2,7 @@ const scanButton = document.querySelector('#scan');
 const stopScanButton = document.querySelector('#stop-scan');
 const writeButton = document.querySelector('#write');
 const makeReadOnlyButton = document.querySelector('#makeReadOnlyButton');
-var scanning=false;
+var scanning=true;
 
 scanButton.addEventListener("click", async () => {
     console.log("User clicked scan button");
