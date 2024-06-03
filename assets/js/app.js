@@ -5,6 +5,7 @@ const makeReadOnlyButton = document.querySelector('#makeReadOnlyButton');
 var scanning=true;
 
 scanButton.addEventListener("click", async () => {
+  location.reload()
     console.log("User clicked scan button");
     document.getElementById('msg').innerText='';
     try {
