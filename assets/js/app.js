@@ -7,6 +7,7 @@ var scanning=true;
 scanButton.addEventListener("click", async () => {
   document.getElementById('status').innerText=''
   document.getElementById('output-nfc').innerText=''
+  document.getElementById('records').innerText=''
     console.log("User clicked scan button");
     document.getElementById('msg').innerText='';
     try {
