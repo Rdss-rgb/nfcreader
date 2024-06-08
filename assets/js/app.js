@@ -107,7 +107,7 @@ scanButton.addEventListener("click", async () => {
         }
         console.log(byteMsg);
         setTimeout(
-          async ()=>{
+          async function (index){
             console.log("We are writing");
             try {
               await ndef.write(byteMsg);
@@ -117,7 +117,7 @@ scanButton.addEventListener("click", async () => {
               console.log(`Write failed try again: ${error}.`);
               document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
             }
-          }, (index/200) * 1000
+          }(index), (index/200) * 1000
         )
         
         
