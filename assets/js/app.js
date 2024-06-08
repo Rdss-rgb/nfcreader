@@ -26,21 +26,37 @@ scanButton.addEventListener("click", async () => {
   
       ndef.addEventListener("reading", async ({ message, serialNumber}) => {
       
+        if(message.records[0]['data']!=null){
+          var mess=message.records[0]['data']['byteLength'];
+
+              console.log(message.records[0])
+              document.getElementById('status').innerText='Found';
+              document.getElementById('loader').classList.add('hidden');
+              console.log(`* Serial Number: ${serialNumber} `, message);
+           if(message.records[0]['recordType']=='empty'){
+            document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`+mess;
+           }
+           else{
+            document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber}  `+`\n`+ `Byte length:`+mess;
+            console.log(message.records[0]['data']['byteLength']) 
+      
+           }
+        }
     
-    //       var mess=message.records[0]['data']['byteLength'];
-
-    //     console.log(message.records[0])
-    //     document.getElementById('status').innerText='Found';
-    //     document.getElementById('loader').classList.add('hidden');
-    //     console.log(`* Serial Number: ${serialNumber} `, message);
-    //  if(message.records[0]['recordType']=='empty'){
-    //   document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `Byte length:`+mess;
-    //  }
-    //  else{
-    //   document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber}  `+`\n`+ `Byte length:`+mess;
-    //   console.log(message.records[0]['data']['byteLength']) 
-
-    //  }
+    else{
+      var mess=message.records[0]['recordType'];
+          document.getElementById('status').innerText='Found';
+          document.getElementById('loader').classList.add('hidden');
+          console.log(`* Serial Number: ${serialNumber} `, message);
+       if(message.records[0]['recordType']=='empty'){
+        document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber} `+`\n`+ `recordType:`+mess;
+       }
+       else{
+        document.getElementById('output-nfc').innerText=`Serial Number: ${serialNumber}  `+`\n`+ `recordType:`+mess;
+        console.log(message.records[0]['data']['byteLength']) 
+  
+       }
+    }  
      console.log(message.records)
 
      // message ${message}
