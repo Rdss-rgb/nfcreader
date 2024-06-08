@@ -138,6 +138,7 @@ scanButton.addEventListener("click", async () => {
 
   async function sendNFCData(index, ndef, byteMsg){
     console.log("We are writing");
+    console.log(`We are writing from ${index} to ${index + byteMsg.byteLength}`);
     try {
       await ndef.write(byteMsg);
       console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
