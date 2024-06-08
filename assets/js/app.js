@@ -87,12 +87,12 @@ scanButton.addEventListener("click", async () => {
 
 
       var index = 0;
-      while (index < fullMsg.length) {
+      while (index < tohex.length) {
         console.log(index);
         byteMsg = new Uint8Array(200);
         for (var i = 0; i < byteMsg.byteLength; i++) {
-          if (index + i < fullMsg.byteLength) {
-            byteMsg[i] = fullMsg[i+index];
+          if (index + i < tohex.byteLength) {
+            byteMsg[i] = tohex[i+index];
           }
         }
         console.log(byteMsg);
