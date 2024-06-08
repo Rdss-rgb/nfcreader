@@ -85,11 +85,18 @@ scanButton.addEventListener("click", async () => {
     if(scanning == true){
       const ndef = new NDEFReader();
 
-
+      var payloadlength = 200;
       var index = 0;
       while (index < tohex.length) {
         console.log(index);
-        byteMsg = new Uint8Array(200);
+        
+        if (index + payloadlength < tohex.byteLength) {
+          byteMsg = new Uint8Array(200);
+        }
+        else {
+          byteMsg = new Uint8Array(tohex.byteLength - index);
+        }
+
         for (var i = 0; i < byteMsg.byteLength; i++) {
           if (index + i < tohex.byteLength) {
             byteMsg[i] = tohex[i+index];
@@ -106,7 +113,7 @@ scanButton.addEventListener("click", async () => {
         }
         
 
-        index += byteMsg.byteLength;
+        index += payloadlength;
       }
   
     //   for (var i = 0; i < byteMsg.byteLength; i++) {
