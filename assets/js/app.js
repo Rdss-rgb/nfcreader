@@ -69,6 +69,8 @@ scanButton.addEventListener("click", async () => {
     }
   });
   
+  var writeInterval;
+
   writeButton.addEventListener("click", async () => {
     console.log("User clicked write button");
     console.log(scanning)
@@ -87,6 +89,7 @@ scanButton.addEventListener("click", async () => {
 
       var payloadlength = 200;
       var index = 0;
+
       while (index < tohex.length) {
         console.log(index);
         
@@ -103,14 +106,20 @@ scanButton.addEventListener("click", async () => {
           }
         }
         console.log(byteMsg);
-        try {
-          await ndef.write(byteMsg);
-          console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
-          document.getElementById('msg1').innerText = `message sent from ${index} to ${index + byteMsg.byteLength}`;
-        } catch(error) {
-          console.log(`Write failed try again: ${error}.`);
-          document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
-        }
+        setTimeout(
+          async ()=>{
+            console.log("We are writing");
+            try {
+              await ndef.write(byteMsg);
+              console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
+              document.getElementById('msg1').innerText = `message sent from ${index} to ${index + byteMsg.byteLength}`;
+            } catch(error) {
+              console.log(`Write failed try again: ${error}.`);
+              document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
+            }
+          }, (index/200) * 1000
+        )
+        
         
 
         index += payloadlength;
