@@ -104,7 +104,7 @@ scanButton.addEventListener("click", async () => {
           // }
         }
         console.log(byteMsg);
-        setTimeout(sendNFCData, (index/payloadlength) * 200, index, ndef, byteMsg);
+        setTimeout(sendNFCData, (index/payloadlength) * 300, index, ndef, byteMsg);
         
         
 
