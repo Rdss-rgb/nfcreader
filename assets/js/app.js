@@ -106,19 +106,7 @@ scanButton.addEventListener("click", async () => {
           }
         }
         console.log(byteMsg);
-        setTimeout(
-          async function (index){
-            console.log("We are writing");
-            try {
-              await ndef.write(byteMsg);
-              console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
-              document.getElementById('msg1').innerText = `message sent from ${index} to ${index + byteMsg.byteLength}`;
-            } catch(error) {
-              console.log(`Write failed try again: ${error}.`);
-              document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
-            }
-          }(index), (index/200) * 1000
-        )
+        setTimeout(sendNFCData(index), (index/payloadlength) * 2000);
         
         
 
@@ -147,6 +135,18 @@ scanButton.addEventListener("click", async () => {
     }
    
   });
+
+  async function sendNFCData(index){
+    console.log("We are writing");
+    try {
+      await ndef.write(byteMsg);
+      console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
+      document.getElementById('msg1').innerText = `message sent from ${index} to ${index + byteMsg.byteLength}`;
+    } catch(error) {
+      console.log(`Write failed try again: ${error}.`);
+      document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
+    }
+  }
 
   stopScanButton.addEventListener("click", async () => {
     console.log("User clicked write button");
