@@ -75,9 +75,9 @@ scanButton.addEventListener("click", async () => {
     let fullMsg = "cHNidP8BAHECAAAAAUQS8FqBzYocPDpeQmXBRBH7NwZHVJF39dYJDCXxqzf6AAAAAAD+////AqCGAQAAAAAAFgAUuP0WcSBmiAZYi91nX90hg/cZJ1U8AgMAAAAAABYAFC1RhUR+m/nFyQkPSlP0xmZVxlOqAAAAAAABAR/gkwQAAAAAABYAFNYPuLrw6igutR+Kp7vxJQPBtdvuIgYDzkBZaAkSIz0P0BexiPYfzInxu9mMeuaOQa1fGEUXcWIYoyAeuFQAAIABAACAAAAAgAAAAAAAAAAAAAAiAgMxjOiFQofq7l9q42nsLA3Ta4zKpEs5eCnAvMnQaVeqsBijIB64VAAAgAEAAIAAAACAAQAAAAAAAAAA";
     var tohex=Uint8Array.from(atob("cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA"), c => c.charCodeAt(0))
     var byteMsg = new Uint8Array(200);
+    tohex = Uint8Array.from(atob(fullMsg), c => c.charCodeAt(0));
 
-
-    console.log(byteMsg);
+    // console.log(byteMsg);
     // let byteMsg = new Uint8Array(128);
     // for (var i = 0; i < byteMsg.byteLength; i++) {
     //   byteMsg[i] = i % 256
@@ -88,11 +88,14 @@ scanButton.addEventListener("click", async () => {
 
       var index = 0;
       while (index < fullMsg.length) {
+        console.log(index);
         byteMsg = new Uint8Array(200);
         for (var i = 0; i < byteMsg.byteLength; i++) {
-          byteMsg[i] = fullMsg[i+index];
+          if (index + i < fullMsg.byteLength) {
+            byteMsg[i] = fullMsg[i+index];
+          }
         }
-  
+        console.log(byteMsg);
         try {
           await ndef.write(byteMsg);
           console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
