@@ -106,7 +106,7 @@ scanButton.addEventListener("click", async () => {
           }
         }
         console.log(byteMsg);
-        setTimeout(sendNFCData(index), (index/payloadlength) * 2000);
+        setTimeout(sendNFCData(index, ndef, byteMsg), (index/payloadlength) * 2000);
         
         
 
@@ -136,7 +136,7 @@ scanButton.addEventListener("click", async () => {
    
   });
 
-  async function sendNFCData(index){
+  async function sendNFCData(index, ndef, byteMsg){
     console.log("We are writing");
     try {
       await ndef.write(byteMsg);
