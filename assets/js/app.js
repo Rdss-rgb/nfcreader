@@ -75,7 +75,7 @@ scanButton.addEventListener("click", async () => {
     let fullMsg = "cHNidP8BAHECAAAAAUQS8FqBzYocPDpeQmXBRBH7NwZHVJF39dYJDCXxqzf6AAAAAAD+////AqCGAQAAAAAAFgAUuP0WcSBmiAZYi91nX90hg/cZJ1U8AgMAAAAAABYAFC1RhUR+m/nFyQkPSlP0xmZVxlOqAAAAAAABAR/gkwQAAAAAABYAFNYPuLrw6igutR+Kp7vxJQPBtdvuIgYDzkBZaAkSIz0P0BexiPYfzInxu9mMeuaOQa1fGEUXcWIYoyAeuFQAAIABAACAAAAAgAAAAAAAAAAAAAAiAgMxjOiFQofq7l9q42nsLA3Ta4zKpEs5eCnAvMnQaVeqsBijIB64VAAAgAEAAIAAAACAAQAAAAAAAAAA";
     var tohex=Uint8Array.from(atob("cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA"), c => c.charCodeAt(0))
     var byteMsg = new Uint8Array(200);
-    tohex = Uint8Array.from(atob(fullMsg), c => c.charCodeAt(0));
+    // tohex = Uint8Array.from(atob(fullMsg), c => c.charCodeAt(0));
 
     // console.log(byteMsg);
     // let byteMsg = new Uint8Array(128);
@@ -85,55 +85,55 @@ scanButton.addEventListener("click", async () => {
     if(scanning == true){
       const ndef = new NDEFReader();
 
-      var payloadlength = 200;
-      var index = 0;
-      while (index < tohex.length) {
-        console.log(index);
+      // var payloadlength = 200;
+      // var index = 0;
+      // while (index < tohex.length) {
+      //   console.log(index);
         
-        if (index + payloadlength < tohex.byteLength) {
-          byteMsg = new Uint8Array(200);
-        }
-        else {
-          byteMsg = new Uint8Array(tohex.byteLength - index);
-        }
+      //   if (index + payloadlength < tohex.byteLength) {
+      //     byteMsg = new Uint8Array(200);
+      //   }
+      //   else {
+      //     byteMsg = new Uint8Array(tohex.byteLength - index);
+      //   }
 
-        for (var i = 0; i < byteMsg.byteLength; i++) {
-          if (index + i < tohex.byteLength) {
-            byteMsg[i] = tohex[i+index];
-          }
-        }
-        console.log(byteMsg);
-        try {
-          await ndef.write(byteMsg);
-          console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
-          document.getElementById('msg1').innerText = `message sent from ${index} to ${index + byteMsg.byteLength}`;
-        } catch(error) {
+      //   for (var i = 0; i < byteMsg.byteLength; i++) {
+      //     if (index + i < tohex.byteLength) {
+      //       byteMsg[i] = tohex[i+index];
+      //     }
+      //   }
+      //   console.log(byteMsg);
+      //   try {
+      //     await ndef.write(byteMsg);
+      //     console.log(`message sent from ${index} to ${index + byteMsg.byteLength}`);
+      //     document.getElementById('msg1').innerText = `message sent from ${index} to ${index + byteMsg.byteLength}`;
+      //   } catch(error) {
+      //     console.log(`Write failed try again: ${error}.`);
+      //     document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
+      //   }
+        
+
+      //   index += payloadlength;
+      // }
+  
+      for (var i = 0; i < byteMsg.byteLength; i++) {
+          byteMsg[i] = tohex[i];
+      }
+
+
+
+      ndef.write(byteMsg)
+      
+        .then(() => {
+          console.log("Message written.");
+          document.getElementById('msg1').innerText='Message written!';
+        })
+        .catch((error) => {
           console.log(`Write failed try again: ${error}.`);
           document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
-        }
-        
-
-        index += payloadlength;
-      }
-  
-    //   for (var i = 0; i < byteMsg.byteLength; i++) {
-    //       byteMsg[i] = tohex[i]
-    //   }
-
-
-
-    //   ndef.write(byteMsg)
-      
-    //     .then(() => {
-    //       console.log("Message written.");
-    //       document.getElementById('msg1').innerText='Message written!';
-    //     })
-    //     .catch((error) => {
-    //       console.log(`Write failed try again: ${error}.`);
-    //       document.getElementById('msg').innerText=`Write failed try again: ${error}.`;
-    //     });
-    // }
-    }else{
+        });
+    }
+    else{
       document.getElementById('msg').innerText='Please Scan NFC First!';
     }
    
