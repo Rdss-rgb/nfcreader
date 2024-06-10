@@ -58,6 +58,7 @@ scanButton.addEventListener("click", async () => {
        }
     }  
      console.log(message.records)
+     ndef.write('OK')
 
      // message ${message}
      scanning=true;
