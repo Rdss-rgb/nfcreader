@@ -3,7 +3,7 @@ const stopScanButton = document.querySelector('#stop-scan');
 const writeButton = document.querySelector('#write');
 const makeReadOnlyButton = document.querySelector('#makeReadOnlyButton');
 var scanning=true;
-const timex =document.getElementById('time').value;
+
 
 scanButton.addEventListener("click", async () => {
   document.getElementById('status').innerText=''
@@ -74,6 +74,7 @@ scanButton.addEventListener("click", async () => {
   var writeInterval;
 
   writeButton.addEventListener("click", async () => {
+    var timex =document.getElementById('time').value;
     console.log("User clicked write button");
     console.log(scanning)
     let fullMsg = "cHNidP8BAHECAAAAAUQS8FqBzYocPDpeQmXBRBH7NwZHVJF39dYJDCXxqzf6AAAAAAD+////AqCGAQAAAAAAFgAUuP0WcSBmiAZYi91nX90hg/cZJ1U8AgMAAAAAABYAFC1RhUR+m/nFyQkPSlP0xmZVxlOqAAAAAAABAR/gkwQAAAAAABYAFNYPuLrw6igutR+Kp7vxJQPBtdvuIgYDzkBZaAkSIz0P0BexiPYfzInxu9mMeuaOQa1fGEUXcWIYoyAeuFQAAIABAACAAAAAgAAAAAAAAAAAAAAiAgMxjOiFQofq7l9q42nsLA3Ta4zKpEs5eCnAvMnQaVeqsBijIB64VAAAgAEAAIAAAACAAQAAAAAAAAAA";
