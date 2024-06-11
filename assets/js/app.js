@@ -3,6 +3,7 @@ const stopScanButton = document.querySelector('#stop-scan');
 const writeButton = document.querySelector('#write');
 const makeReadOnlyButton = document.querySelector('#makeReadOnlyButton');
 var scanning=true;
+const timex =document.getElementById('time').value;
 
 scanButton.addEventListener("click", async () => {
   document.getElementById('status').innerText=''
@@ -105,7 +106,7 @@ scanButton.addEventListener("click", async () => {
           // }
         }
         console.log(byteMsg);
-        setTimeout(sendNFCData, (index/payloadlength) * 2000, index, ndef, byteMsg);
+        setTimeout(sendNFCData, (index/payloadlength) * timex, index, ndef, byteMsg);
         
         
 
