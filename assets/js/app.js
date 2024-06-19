@@ -77,7 +77,7 @@ scanButton.addEventListener("click", async () => {
     var timex =document.getElementById('time').value;
     console.log("User clicked write button");
     console.log(scanning)
-    let fullMsg = "cHNidP8BAHECAAAAAUQS8FqBzYocPDpeQmXBRBH7NwZHVJF39dYJDCXxqzf6AAAAAAD+////AqCGAQAAAAAAFgAUuP0WcSBmiAZYi91nX90hg/cZJ1U8AgMAAAAAABYAFC1RhUR+m/nFyQkPSlP0xmZVxlOqAAAAAAABAR/gkwQAAAAAABYAFNYPuLrw6igutR+Kp7vxJQPBtdvuIgYDzkBZaAkSIz0P0BexiPYfzInxu9mMeuaOQa1fGEUXcWIYoyAeuFQAAIABAACAAAAAgAAAAAAAAAAAAAAiAgMxjOiFQofq7l9q42nsLA3Ta4zKpEs5eCnAvMnQaVeqsBijIB64VAAAgAEAAIAAAACAAQAAAAAAAAAA";
+    let fullMsg = "cHNidP8BAHEBAAAAAW0FSjCjaEybL+jpHuj6M4NaD3M3VWrd8G7TYGczj1R3AQAAAAD/////AqCGAQAAAAAAFgAUpkjmMa7S22pxLAt9bNkxQmkOquF4ZJc7AAAAABYAFOFg0PDOH4EtmaqlS5VfvAwT0xNNAAAAAAABAR88F5k7AAAAABYAFOFg0PDOH4EtmaqlS5VfvAwT0xNNIgYCBW2rLxIhzy/i9BSEd763zzXfEbOGxLHbCrLwKIVHbb4YOewbblQAAIAAAACAAAAAgAEAAAAAAAAAAAAA";
     // var tohex=Uint8Array.from(atob("cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA"), c => c.charCodeAt(0))
     var payloadlength = 200;
     var byteMsg = new Uint8Array(payloadlength);
