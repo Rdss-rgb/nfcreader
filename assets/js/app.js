@@ -75,12 +75,14 @@ scanButton.addEventListener("click", async () => {
 
   writeButton.addEventListener("click", async () => {
     var timex =document.getElementById('time').value;
+    var pload =document.getElementById('payload').value;
+    var fullMsg =document.getElementById('fullMsg').value;
     console.log("User clicked write button");
     console.log(scanning)
-    let fullMsg = "cHNidP8BAHEBAAAAAW0FSjCjaEybL+jpHuj6M4NaD3M3VWrd8G7TYGczj1R3AQAAAAD/////AqCGAQAAAAAAFgAUpkjmMa7S22pxLAt9bNkxQmkOquF4ZJc7AAAAABYAFOFg0PDOH4EtmaqlS5VfvAwT0xNNAAAAAAABAR88F5k7AAAAABYAFOFg0PDOH4EtmaqlS5VfvAwT0xNNIgYCBW2rLxIhzy/i9BSEd763zzXfEbOGxLHbCrLwKIVHbb4YOewbblQAAIAAAACAAAAAgAEAAAAAAAAAAAAA";
+    // let fullMsg = "cHNidP8BAHEBAAAAAW0FSjCjaEybL+jpHuj6M4NaD3M3VWrd8G7TYGczj1R3AQAAAAD/////AqCGAQAAAAAAFgAUpkjmMa7S22pxLAt9bNkxQmkOquF4ZJc7AAAAABYAFOFg0PDOH4EtmaqlS5VfvAwT0xNNAAAAAAABAR88F5k7AAAAABYAFOFg0PDOH4EtmaqlS5VfvAwT0xNNIgYCBW2rLxIhzy/i9BSEd763zzXfEbOGxLHbCrLwKIVHbb4YOewbblQAAIAAAACAAAAAgAEAAAAAAAAAAAAA";
     // var tohex=Uint8Array.from(atob("cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA"), c => c.charCodeAt(0))
-    var payloadlength = 200;
-    var byteMsg = new Uint8Array(payloadlength);
+    // var payloadlength = 200;
+    var byteMsg = new Uint8Array(pload);
     var tohex = Uint8Array.from(atob(fullMsg), c => c.charCodeAt(0));
 
     // console.log(byteMsg);
@@ -94,8 +96,8 @@ scanButton.addEventListener("click", async () => {
       while (index < tohex.length) {
         console.log(index);
         
-        if (index + payloadlength < tohex.byteLength) {
-          byteMsg = new Uint8Array(200);
+        if (index + pload < tohex.byteLength) {
+          byteMsg = new Uint8Array(pload);
         }
         else {
           byteMsg = new Uint8Array(tohex.byteLength - index);
@@ -107,11 +109,11 @@ scanButton.addEventListener("click", async () => {
           // }
         }
         console.log(byteMsg);
-        setTimeout(sendNFCData, (index/payloadlength) * timex, index, ndef, byteMsg);
+        setTimeout(sendNFCData, (index/pload) * timex, index, ndef, byteMsg);
         
         
 
-        index += payloadlength;
+        index += pload;
       }
   
       // for (var i = 0; i < byteMsg.byteLength; i++) {
